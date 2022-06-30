@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <h2>Listagem de transações</h2>
+    <br>
+    <a href="{% url 'nova' %}" class="btn btn-success" role="button" aria-pressed="true">Nova Transação</a>
+    <p></p>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Descrição</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for transacao in transacoes %}
+          <tr>
+            
+            <td>{{transacao.descricao}}</td>
+            <td>{{transacao.categoria}}</td>
+            <td>{{transacao.data}}</td>
+            <td>R$ {{transacao.valor}}</td>
+            <td><a href="{% url 'url_update' transacao.id %}" class="btn btn-warning" role="button" aria-pressed="true">Editar</a></td>
+            <td><a href="{% url 'url_delete' transacao.id %}" class="btn btn-danger" role="button" aria-pressed="true">Deletar</a></td>
+            
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
